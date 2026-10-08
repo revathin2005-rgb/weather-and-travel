@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Search weather conditions and get travel suggestions for any city."
+    />
+    <title>Smart Weather & Travel Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Smart Weather home">
+          <span class="brand-mark" aria-hidden="true">☀️</span>
+          <span>Smart Weather</span>
+        </a>
+
+        <form class="search-form" id="search-form" novalidate>
+          <label class="sr-only" for="city-input">Search for a city</label>
+          <div class="search-input-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input
+              id="city-input"
+              name="city"
+              type="search"
+              placeholder="Search city"
+              autocomplete="off"
+              aria-describedby="search-status"
+            />
+          </div>
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </header>
+
+      <main class="dashboard" id="dashboard">
+        <section class="hero card" aria-live="polite">
+          <div class="hero-copy">
+            <p class="eyebrow" id="location-label">Travel weather</p>
+            <h1 id="city-name">Discover your next destination</h1>
+            <p id="last-updated" class="last-updated">Weather will appear here.</p>
+          </div>
+
+          <div class="current-weather" id="current-weather">
+            <div class="condition-icon" id="condition-icon" aria-label="Current weather condition">
+              🌤️
+            </div>
+            <div>
+              <p class="temperature" id="temperature">--°C</p>
+              <p class="condition" id="condition">Waiting for weather data</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Current weather details">
+          <article class="stat-card card">
+            <span class="stat-label">Feels like</span>
+            <strong id="feels-like">--°C</strong>
+          </article>
+          <article class="stat-card card">
+            <span class="stat-label">Humidity</span>
+            <strong id="humidity">--%</strong>
+          </article>
+          <article class="stat-card card">
+            <span class="stat-label">Wind</span>
+            <strong id="wind-speed">-- km/h</strong>
+          </article>
+          <article class="stat-card card">
+            <span class="stat-label">Visibility</span>
+            <strong id="visibility">-- km</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="card forecast-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Forecast</p>
+                <h2>5-day outlook</h2>
+              </div>
+            </div>
+            <div class="forecast-list" id="forecast-list" aria-live="polite">
+              <p class="empty-state">Your city forecast will appear here.</p>
+            </div>
+          </article>
+
+          <aside class="card travel-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Travel guide</p>
+                <h2>Smart suggestions</h2>
+              </div>
+            </div>
+
+            <div class="travel-summary" id="travel-summary">
+              <p>Search for a city to get personalized suggestions.</p>
+            </div>
+
+            <ul class="travel-tips" id="travel-tips">
+              <li>🌤️ Check the weather before packing.</li>
+              <li>🧳 Bring layers for changing conditions.</li>
+              <li>🗓️ Plan outdoor activities around the best hours.</li>
+            </ul>
+          </aside>
+        </section>
+      </main>
+
+      <div class="status-banner" id="search-status" role="status" aria-live="polite"></div>
+    </div>
+
+    <template id="forecast-template">
+      <article class="forecast-item">
+        <p class="forecast-day"></p>
+        <span class="forecast-icon" aria-hidden="true"></span>
+        <p class="forecast-temp"></p>
+        <p class="forecast-condition"></p>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
